@@ -103,3 +103,6 @@ The method for goals reaching.
 
 * [Home page](https://code.divandesign.biz/jquery/ddmetrics)
 * [Telegram chat](https://t.me/dd_code)
+
+
+<link rel="stylesheet" type="text/css" href="https://DivanDesign.ru/assets/files/ddMarkdown.css" />
