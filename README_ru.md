@@ -97,3 +97,9 @@ $.ddMetrics.reachGoal(
 	* Desctription: Конкретный параметр, где ключ — название параметра, значение — значение.
 	* Valid values: `string`
 	* **Required**
+
+
+## Ссылки
+
+* [Home page](https://code.divandesign.biz/jquery/ddmetrics)
+* [Telegram chat](https://t.me/dd_code)

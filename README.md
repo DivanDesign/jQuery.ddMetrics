@@ -97,3 +97,9 @@ The method for goals reaching.
 	* Desctription: A goal parameter when key — parameter name, value — value.
 	* Valid values: `string`
 	* **Required**
+
+
+## Links
+
+* [Home page](https://code.divandesign.biz/jquery/ddmetrics)
+* [Telegram chat](https://t.me/dd_code)
