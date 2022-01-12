@@ -7,13 +7,10 @@ A jQuery library for easy working with Yandex.Metrica and Google Analytics.
 * [jQuery](https://jquery.com/) >= 1.11.1
 
 
-## Documentation
+## Usage
 
 
-### Usage
-
-
-#### 1. Include JS on page
+### 1. Include JS on page
 
 ```html
 <!-- Required libs -->
@@ -24,7 +21,7 @@ A jQuery library for easy working with Yandex.Metrica and Google Analytics.
 ```
 
 
-#### 2. Init the library
+### 2. Init the library
 
 ```js
 //Init metrics
@@ -37,7 +34,7 @@ $.ddMetrics.init({
 ```
 
 
-#### 3. Just reach your goals
+### 3. Just reach your goals
 
 You don't need to wait while counters API will be loaded. It's no longer your problem, the library will take care about that.
 
@@ -56,10 +53,10 @@ $.ddMetrics.reachGoal(
 ```
 
 
-### Parameters description
+## Parameters description
 
 
-#### `jQuery.ddMetrics.init(params)`
+### `jQuery.ddMetrics.init(params)`
 
 The library initialization method.
 
@@ -79,7 +76,7 @@ The library initialization method.
 	* Default value: `false`
 
 
-#### `jQuery.ddMetrics.reachGoal(name, params)`
+### `jQuery.ddMetrics.reachGoal(name, params)`
 
 The method for goals reaching.
 
