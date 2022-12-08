@@ -86,7 +86,7 @@
 		
 		/**
 		 * @method init
-		 * @version 2.0 (2018-11-24)
+		 * @version 2.0.1 (2022-12-08)
 		 * 
 		 * @desc Инициализация счётчиков.
 		 * 
@@ -139,16 +139,16 @@
 				_this.countersData.googleAnalytics.isEnabled = !!params.googleAnalytics_isEnabled;
 				
 				//Проходимся по уже вызванным целям и вызываем их по настоящему
-				$.each(
-					_this.beforeInitStack,
-					function(){
+				_this.beforeInitStack.forEach(
+					(value) =>
+					{
 						_this.reachGoal(
-							this.name,
-							this.params
+							value.name,
+							value.params
 						);
 					}
 				);
-				
+
 				//Очищаем для порядка
 				_this.beforeInitStack = [];
 			}else{
