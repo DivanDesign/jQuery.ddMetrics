@@ -24,11 +24,11 @@ A jQuery library for easy working with Yandex.Metrica and Google Analytics.
 ### 2. Init the library
 
 ```js
-//Init metrics
+// Init metrics
 $.ddMetrics.init({
-	//TODO: Insert Yandex.Metrica counder ID or remove it
+	// TODO: Insert Yandex.Metrica counder ID or remove it
 	yandexMetrika_counterId: 0000,
-	//TODO: If Google Analitycs is not used, remove it
+	// TODO: If Google Analitycs is not used, remove it
 	googleAnalytics_isEnabled: true
 });
 ```
@@ -39,10 +39,10 @@ $.ddMetrics.init({
 You don't need to wait while counters API will be loaded. It's no longer your problem, the library will take care about that.
 
 ```js
-//Goal without params
+// Goal without params
 $.ddMetrics.reachGoal('someGoalId');
 
-//Goal with some params
+// Goal with some params
 $.ddMetrics.reachGoal(
 	'someGoalId',
 	{

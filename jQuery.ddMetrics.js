@@ -9,29 +9,29 @@
 
 (function($){
 	$.ddMetrics = {
-		//Инициализированы ли счётчики
+		// Инициализированы ли счётчики
 		isInited: false,
-		//Временный массив (пока счётчики не загрузятся, будем запоминать)
+		// Временный массив (пока счётчики не загрузятся, будем запоминать)
 		beforeInitStack: [],
-		//Данные счётчиков
+		// Данные счётчиков
 		countersData: {
-			//Данные Google Analytics
+			// Данные Google Analytics
 			googleAnalytics: {
 				isEnabled: false
 			},
-			//Данные Яндекс.Метрики
+			// Данные Яндекс.Метрики
 			yandexMetrika: {
 				isEnabled: false,
-				//Ссылка на объект (подменится, как загрузится)
+				// Ссылка на объект (подменится, как загрузится)
 				object: {},
-				//Параметры визита, передаваемые в Яндекс.Метрику
+				// Параметры визита, передаваемые в Яндекс.Метрику
 				visitParams: {}
 			}
 		},
 		
 		/**
 		 * @method reachGoal
-		 * @version 1.1 (2018-11-24)
+		 * @version 1.1.1 (2024-08-06)
 		 * 
 		 * @desc Достижение цели (все достижения целей следует делать через этот метод)
 		 * 
@@ -50,7 +50,7 @@
 			name = $.trim(name);
 			
 			if (name != ''){
-				//Если счётчики ещё не инициализирован, просто запомним
+				// Если счётчики ещё не инициализирован, просто запомним
 				if (!_this.isInited){
 					var	goal = {name: name};
 					
@@ -58,9 +58,9 @@
 					
 					_this.beforeInitStack.push(goal);
 				}else{
-					//Яндекс.Метрика
+					// Яндекс.Метрика
 					if (_this.countersData.yandexMetrika.isEnabled){
-						//Если есть дополнительные параметры
+						// Если есть дополнительные параметры
 						if ($.isPlainObject(params)){
 							_this.countersData.yandexMetrika.object.reachGoal(
 								name,
@@ -71,7 +71,7 @@
 						}
 					}
 					
-					//Google Analytics
+					// Google Analytics
 					if (_this.countersData.googleAnalytics.isEnabled){
 						ga(
 							'send',
@@ -86,7 +86,7 @@
 		
 		/**
 		 * @method init
-		 * @version 2.0.1 (2022-12-08)
+		 * @version 2.0.2 (2024-08-06)
 		 * 
 		 * @desc Инициализация счётчиков.
 		 * 
@@ -99,28 +99,28 @@
 		init: function(params){
 			var _this = this;
 			
-			//Это внутренний параметр, передавать его не нужно
+			// Это внутренний параметр, передавать его не нужно
 			params.yandexMetrika_isEnabled = $.isNumeric(params.yandexMetrika_counterId);
 			
 			if (
 				(
 					(
-						//Если Яндекс.Метрика используется
+						// Если Яндекс.Метрика используется
 						params.yandexMetrika_isEnabled &&
-						//И существует объект яндекс метрики
+						// И существует объект яндекс метрики
 						typeof window['yaCounter' + params.yandexMetrika_counterId] != 'undefined'
 					) ||
-					//Или Яндекс.Метрика не используется
+					// Или Яндекс.Метрика не используется
 					!params.yandexMetrika_isEnabled
 				) &&
 				(
-					//Если есть вызов гугл аналититики
+					// Если есть вызов гугл аналититики
 					(
 						params.googleAnalytics_isEnabled &&
-						//И можно отправлять цели в гугл аналитику
+						// И можно отправлять цели в гугл аналитику
 						typeof ga != 'undefined'
 					) ||
-					//Или нет вызова гугл аналититики
+					// Или нет вызова гугл аналититики
 					!params.googleAnalytics_isEnabled
 				)
 			){
@@ -129,16 +129,16 @@
 				if (params.yandexMetrika_isEnabled){
 					_this.countersData.yandexMetrika.isEnabled = params.yandexMetrika_isEnabled;
 					
-					//Меняем счётчик на настоящий
+					// Меняем счётчик на настоящий
 					_this.countersData.yandexMetrika.object = window['yaCounter' + params.yandexMetrika_counterId];
 					
-					//Передаём параметры визита (https://yandex.ru/support/metrika/objects/params-method.xml)
+					// Передаём параметры визита (https://yandex.ru/support/metrika/objects/params-method.xml)
 					_this.countersData.yandexMetrika.object.params(_this.countersData.yandexMetrika.visitParams);
 				}
 				
 				_this.countersData.googleAnalytics.isEnabled = !!params.googleAnalytics_isEnabled;
 				
-				//Проходимся по уже вызванным целям и вызываем их по настоящему
+				// Проходимся по уже вызванным целям и вызываем их по настоящему
 				_this.beforeInitStack.forEach(
 					(value) =>
 					{
@@ -149,10 +149,10 @@
 					}
 				);
 
-				//Очищаем для порядка
+				// Очищаем для порядка
 				_this.beforeInitStack = [];
 			}else{
-				//Попробуем ещё раз через полсекунды
+				// Попробуем ещё раз через полсекунды
 				setTimeout(
 					function(){
 						_this.init(params);
